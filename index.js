@@ -5,7 +5,7 @@ const formularioContacto=document.getElementById('form');
 const cuerpotabla=document.getElementById('cuerpotabla');
 const lista=[];
 
-
+//en caso de que se recargue la pagina y no se pierda los datos:
 
 const guardarLocalStorage = () => {
     
@@ -44,18 +44,39 @@ return acc+`
 };
 
 //! UPDATE
-const editarlista = () => {};
+const editarlista = (indice) => {
+
+    
+    
+    const{Pedido,Cliente,Telefono}=lista[indice];
+    const nuevoPedido=prompt('Agrega un nuevo pedido',Pedido);
+    const nuevocliente=prompt('Agrega un nuevo Nombre y Apellido',Cliente);
+    const nuevotelefono=prompt('Agrega un nuevo Telefono',Telefono);
+    lista[indice]={
+        Pedido:nuevoPedido,
+        Cliente:nuevocliente,
+        Telefono:nuevotelefono,
+    }
+mostrarlista();
+ alert('Se actualizo los datos correctamente!');
+    
+};
 
 //! DELETE
-const eliminarlista = () => {};
+const eliminarlista = () => {
+
+   
+    
+    
+};
 
 //parte donde se colocara los datos para luego iniciar con el CRUD
 
 formularioContacto.addEventListener('submit', (event) => {
 
-    // ojo: cuando los campos estannvacios ,aparecera un alert diciendo que completes los datos
-    event.preventDefault();
     
+    event.preventDefault();
+    // ojo: cuando los campos estannvacios ,aparecera un alert diciendo que completes los datos
     if (!camppedido.value||!campcliente.value||!camptelefono.value) {
       alert('Esos datos no pueden estar vacios')
       return;
