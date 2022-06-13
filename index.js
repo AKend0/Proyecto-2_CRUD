@@ -63,8 +63,12 @@ mostrarlista();
 };
 
 //! DELETE
-const eliminarlista = () => {
-
+const eliminarlista = (indice) => {
+   if(confirm('¿Desea eliminar el elemento?')){
+       lista.splice(indice,1);
+           mostrarlista();
+     alert('Se elimino correctamente!');
+   }
    
     
     
