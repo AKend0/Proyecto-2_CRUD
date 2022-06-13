@@ -8,12 +8,13 @@ let lista=[];
 //en caso de que se recargue la pagina y no se pierda los datos:
 
 const guardarLocalStorage = (datos) => {
-
+   
     localStorage.setItem('lista',JSON.stringify(datos))
     
 };
 const recuperarLocalStorage = () => {
    lista=JSON.parse(localStorage.getItem('lista'));
+   if(lista==null)lista=[];
     mostrarlista();
 };
 
@@ -28,7 +29,10 @@ const guardarlista = (datoscontacto) => {
 };
 //!READ
 const mostrarlista = () => {
-console.log(lista);
+  /*   if(lista.length==0){
+    
+        return;
+    }; */ 
     cuerpotabla.innerHTML=lista.reduce((acc,listas,index)=>{
 return acc+`
 <tr>
