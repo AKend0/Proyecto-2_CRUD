@@ -3,14 +3,19 @@ const campcliente=document.getElementById('cliente');
 const camptelefono=document.getElementById('telefono');
 const formularioContacto=document.getElementById('form');
 const cuerpotabla=document.getElementById('cuerpotabla');
-const lista=[];
+let lista=[];
 
 //en caso de que se recargue la pagina y no se pierda los datos:
 
-const guardarLocalStorage = () => {
+const guardarLocalStorage = (datos) => {
+
+    localStorage.setItem('lista',JSON.stringify(datos))
     
 };
-const recuperarLocalStorage = () => {};
+const recuperarLocalStorage = () => {
+   lista=JSON.parse(localStorage.getItem('lista'));
+    mostrarlista();
+};
 
 
 //! CREATE
@@ -41,6 +46,7 @@ return acc+`
     },'')
     
     
+    guardarLocalStorage(lista);
 };
 
 //! UPDATE
@@ -94,3 +100,4 @@ formularioContacto.addEventListener('submit', (event) => {
     });
     formularioContacto.reset();
 });
+recuperarLocalStorage();
